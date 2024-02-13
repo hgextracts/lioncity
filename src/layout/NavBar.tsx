@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Image from "next/image";
 import lclogo from "../../public/lclogo.png";
+import BrowserWallet from "@/wallet/BrowserWallet";
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);
@@ -36,7 +37,7 @@ const NavBar = () => {
             <Image
               src={lclogo}
               alt="Logo"
-              className="w-[75px]"
+              className="w-[60px]"
               priority={true}
             />
 
@@ -55,7 +56,7 @@ const NavBar = () => {
         </Link>
         <ul
           style={{ color: `${textColor}` }}
-          className="hidden lg:flex font-bold text-xl space-x-6"
+          className="hidden xl:flex font-bold text-lg space-x-6"
         >
           <li>
             <Link href="/dashboard">
@@ -101,30 +102,34 @@ const NavBar = () => {
             </Link>
           </li>
         </ul>
+        <div className="hidden xl:flex">
+          <BrowserWallet textColor={textColor} />
+        </div>
         {/* mobile button */}
         <div
           onClick={handleNav}
-          className="block lg:hidden z-10 border-2 p-1 rounded-md"
+          className="block xl:hidden z-10 border-2 p-1 rounded-md"
           style={{ borderColor: `${textColor}`, color: `${textColor}` }}
         >
           {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
         {/* mobile Menu */}
         <div
-          onClick={handleNav}
+          // onClick={handleNav}
           className={
             nav
-              ? "lg:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen menuBackground text-center ease-in duration-300"
-              : "lg:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen menuBackground text-center ease-in duration-300"
+              ? "xl:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen menuBackground text-center ease-in duration-300"
+              : "xl:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen menuBackground text-center ease-in duration-300"
           }
         >
-          <div className="flex flex-col gap-[3rem]">
+          <div className="flex flex-col gap-[2rem]">
+            <BrowserWallet textColor={textColor} />
             <Link href="/" passHref>
               <div className="flex items-center">
                 <Image
                   src={lclogo}
                   alt="Logo"
-                  className="w-[75px]"
+                  className="w-[60px]"
                   priority={true}
                 />
 

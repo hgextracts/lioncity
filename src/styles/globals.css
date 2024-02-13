@@ -3,15 +3,15 @@
 @import "tailwindcss/utilities";
 
 :root {
-  --text-color: var(--text); /* Default (light mode) color */
-  --background-start-color: var(--background); /* Default (light mode) color */
-  --background-end-color: var(--secondary); /* Default (light mode) color */
+  --text-color: var(--text);
+  --background-start-color: var(--background);
+  --background-end-color: var(--secondary);
 }
 
 .dark {
-  --text-color: var(--text); /* Dark mode color */
-  --background-start-color: var(--background); /* Dark mode color */
-  --background-end-color: var(--secondary); /* Dark mode color */
+  --text-color: var(--text);
+  --background-start-color: var(--background);
+  --background-end-color: var(--secondary);
 }
 
 body {
@@ -22,9 +22,9 @@ body {
       var(--background-end-color)
     )
     var(--background-start-color);
-  background-attachment: fixed; /* This fixes the background */
-  background-repeat: no-repeat; /* Prevents the background from repeating */
-  background-size: cover; /* Ensures the background covers the entire viewport */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @layer base {
@@ -68,7 +68,31 @@ body {
       var(--background-end-color)
     )
     var(--background-start-color);
-  background-attachment: fixed; /* This fixes the background */
-  background-repeat: no-repeat; /* Prevents the background from repeating */
-  background-size: cover; /* Ensures the background covers the entire viewport */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  z-index: 1001;
 }

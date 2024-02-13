@@ -1,11 +1,24 @@
+import { type Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
+import { type AppType } from "next/app";
+import { trpc } from "@/utils/trpc";
+import { WalletProvider } from "@/context/UseWalletContext";
 import Layout from "@/layout/layout";
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
 
-export default function App({ Component, pageProps }: AppProps) {
+const MyApp: AppType<{ session: Session | null }> = ({
+  Component,
+  pageProps: { session, ...pageProps },
+}) => {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <SessionProvider session={session}>
+      <WalletProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </WalletProvider>
+    </SessionProvider>
   );
-}
+};
+
+export default trpc.withTRPC(MyApp);
