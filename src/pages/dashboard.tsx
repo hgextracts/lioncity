@@ -18,8 +18,8 @@ import luckyImage from "../../public/kingcrop.png";
 import degenImage from "../../public/degencrop.png";
 import defaultImage from "../../public/lclogo.png";
 import { fromText } from "lucid-cardano";
-import PolicyCardSkeleton from "@/skeletons/PolicyCardSkeleton";
-import UserCardSkeleton from "@/skeletons/UserCardSkeleton";
+import PolicyCardSkeleton from "../../skeletons/PolicyCardSkeleton";
+import UserCardSkeleton from "../../skeletons/UserCardSkeleton";
 import Link from "next/link";
 
 const degenHex = fromText("DegensSoon");
