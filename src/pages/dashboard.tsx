@@ -19,7 +19,7 @@ import degenImage from "../../public/degencrop.png";
 import defaultImage from "../../public/lclogo.png";
 import { fromText } from "lucid-cardano";
 import PolicyCardSkeleton from "@/components/PolicyCardSkeleton";
-import UserCardSkeleton from "@/components/UserCardSkeleton";
+import UserCardSkeletons from "@/components/UserCardSkeleton";
 import Link from "next/link";
 
 const degenHex = fromText("DegensSoon");
@@ -175,7 +175,7 @@ const Dashboard: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 h-[400px] w-full">
             <div className="md:col-span-2">
               {isLoadingUserData ? (
-                <UserCardSkeleton />
+                <UserCardSkeletons />
               ) : (
                 <UserCard
                   image={session.user.image || defaultImage}
