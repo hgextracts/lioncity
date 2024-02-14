@@ -123,7 +123,6 @@ const NavBar = () => {
           }
         >
           <div className="flex flex-col gap-[2rem]">
-            <BrowserWallet textColor={textColor} />
             <Link href="/" passHref>
               <div className="flex items-center">
                 <Image
@@ -143,6 +142,7 @@ const NavBar = () => {
                 </div>
               </div>
             </Link>
+            <BrowserWallet textColor={textColor} />
             <ul className="text-xl space-y-8">
               <li>
                 <Link href="/dashboard" onClick={handleNav}>

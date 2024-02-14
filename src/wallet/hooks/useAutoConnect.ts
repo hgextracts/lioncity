@@ -1,24 +1,17 @@
-import { useCallback, useContext, useEffect } from "react";
-import { useSession } from "next-auth/react";
+// In useAutoConnect.js
+import { useCallback } from "react";
 import { WalletDetails } from "@/types/wallet";
 import { getItem } from "@/utils/localStorageUtils";
 import { useInitializeWallet } from "./useInitializeWallet";
-import { useFetchAssets } from "./useAssets";
 
 export const useAutoConnect = () => {
-  const { data: session } = useSession();
   const initializeWallet = useInitializeWallet();
-  const fetchAssets = useFetchAssets();
 
   const autoConnect = useCallback(async (): Promise<void> => {
     const storedWalletDetails = getItem<WalletDetails>("walletDetails");
-    if (session && storedWalletDetails) {
+    if (storedWalletDetails) {
       try {
-        const { lucid } = await initializeWallet(storedWalletDetails);
-
-        if (lucid) {
-          fetchAssets(lucid);
-        }
+        await initializeWallet(storedWalletDetails);
       } catch (err) {
         console.error(
           "Error in useAutoConnect:",
@@ -26,11 +19,7 @@ export const useAutoConnect = () => {
         );
       }
     }
-  }, [session, initializeWallet, fetchAssets]);
-
-  useEffect(() => {
-    autoConnect();
-  }, [autoConnect]);
+  }, [initializeWallet]);
 
   return { autoConnect };
 };

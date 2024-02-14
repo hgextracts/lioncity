@@ -5,6 +5,8 @@ import { trpc } from "@/utils/trpc";
 import { WalletProvider } from "@/context/UseWalletContext";
 import Layout from "@/layout/layout";
 import "@/styles/globals.css";
+import { useAutoConnect } from "@/wallet/hooks/useAutoConnect";
+import { useEffect } from "react";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,

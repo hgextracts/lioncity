@@ -24,11 +24,18 @@ const config: Config = {
       backgroundImage: {
         "linear-primary-secondary":
           "linear-gradient(to right, #92b2ec, #0f3f93)",
+        "linear-primary-secondary-l":
+          "linear-gradient(to left, #92b2ec, #0f3f93)",
         "linear-primary-accent": "linear-gradient(#92b2ec, #3a7ef7)",
         "linear-secondary-accent": "linear-gradient(#0f3f93, #3a7ef7)",
         "radial-primary-secondary": "radial-gradient(#92b2ec, #0f3f93)",
+        "radial-secondary-primary": "radial-gradient(#0f3f93, #92b2ec)",
         "radial-primary-accent": "radial-gradient(#92b2ec, #3a7ef7)",
         "radial-secondary-accent": "radial-gradient(#0f3f93, #3a7ef7)",
+        "radial-secondary-shade":
+          "radial-gradient(circle at top left,#0f3f93, var(--shade))",
+        "radial-secondary-shade-opposite":
+          "radial-gradient(circle at bottom right,#0f3f93, var(--shade))",
       },
     },
   },

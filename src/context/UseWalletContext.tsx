@@ -33,16 +33,6 @@ export const defaultContextState: WalletContextProps = {
   setAddr: createNoopSetter<string | undefined>("setAddr"),
   stakeKey: undefined,
   setStakeKey: createNoopSetter<string | undefined>("setStakeKey"),
-  ada: undefined,
-  setAda: createNoopSetter<number | undefined>("setAda"),
-  mane: undefined,
-  setMane: createNoopSetter<number | undefined>("setMane"),
-  tMane: undefined,
-  setTMane: createNoopSetter<number | undefined>("setTMane"),
-  assetsByPolicyId: undefined,
-  setAssetsByPolicyId: createNoopSetter<AssetsByPolicy | undefined>(
-    "setAssetsByPolicyId"
-  ),
   error: null,
   setError: () => {},
 };
@@ -71,16 +61,6 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({
   const [stakeKey, setStakeKey] = useState<string | undefined>(
     defaultContextState.stakeKey
   );
-  const [ada, setAda] = useState<number | undefined>(defaultContextState.ada);
-  const [mane, setMane] = useState<number | undefined>(
-    defaultContextState.mane
-  );
-  const [tMane, setTMane] = useState<number | undefined>(
-    defaultContextState.tMane
-  );
-  const [assetsByPolicyId, setAssetsByPolicyId] = useState<
-    AssetsByPolicy | undefined
-  >(defaultContextState.assetsByPolicyId);
   const [error, setError] = useState<AppError | null>(null);
 
   const contextValue: WalletContextProps = {
@@ -96,14 +76,6 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({
     setWalletDetails,
     stakeKey,
     setStakeKey,
-    ada,
-    setAda,
-    mane,
-    setMane,
-    tMane,
-    setTMane,
-    assetsByPolicyId,
-    setAssetsByPolicyId,
     error,
     setError,
   };

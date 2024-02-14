@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useWallet } from "./hooks/useWallet";
 import Image from "next/image";
 import { WalletDetails } from "@/types/wallet";
@@ -8,6 +8,7 @@ import { FaDiscord } from "react-icons/fa";
 import Modal from "@/layout/Modal";
 import { useLiveNetworkManager } from "./hooks/useLiveNetworkManager";
 import { WalletContext } from "@/context/UseWalletContext";
+import { useAutoConnect } from "./hooks/useAutoConnect";
 
 interface BrowserWalletModalContentProps {
   wallets: WalletDetails[];
@@ -15,7 +16,7 @@ interface BrowserWalletModalContentProps {
 }
 
 interface BrowserWalletProps {
-  textColor: string;
+  textColor?: string;
 }
 
 const BrowserWalletModalContent: React.FC<BrowserWalletModalContentProps> = ({
@@ -51,6 +52,14 @@ const BrowserWallet: React.FC<BrowserWalletProps> = ({ textColor }) => {
   const { data: session, status } = useSession();
   const { walletDetails } = useContext(WalletContext);
   const [isActionsModalOpen, setActionsModalOpen] = useState(false);
+  const { autoConnect } = useAutoConnect();
+
+  useEffect(() => {
+    // Only auto-connect if the session status is 'authenticated'
+    if (status === "authenticated") {
+      autoConnect();
+    }
+  }, [autoConnect, status]);
 
   useLiveNetworkManager();
 

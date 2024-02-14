@@ -1,66 +1,38 @@
-import { useContext, useEffect, useCallback } from "react";
+import { useContext, useEffect } from "react";
 import { WalletContext } from "@/context/UseWalletContext";
-import { useAutoConnect } from "./useAutoConnect";
 
 export const useLiveNetworkManager = () => {
-  const { api, lucid } = useContext(WalletContext);
-  const { autoConnect } = useAutoConnect();
-
-  const handleAccountChange = useCallback(
-    async (...args: unknown[]) => {
-      try {
-        if (lucid) {
-          console.log("Account changed, will trigger autoConnect.");
-          autoConnect();
-        } else {
-          console.error("Lucid instance is undefined");
-        }
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
-    },
-    [lucid, autoConnect]
-  );
-
-  const handleNetworkChange = useCallback(
-    (network: unknown) => {
-      try {
-        if (lucid) {
-          console.log("Network changed, will trigger autoConnect.");
-          autoConnect();
-        } else {
-          console.error("Lucid instance is undefined");
-        }
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
-    },
-    [lucid, autoConnect]
-  );
+  const { api } = useContext(WalletContext);
 
   useEffect(() => {
-    if (api?.experimental?.on && api?.experimental?.off) {
-      try {
-        api.experimental.on("accountChange", handleAccountChange);
-        api.experimental.on("networkChange", handleNetworkChange);
-      } catch (error) {
-        console.error(
-          "An error occurred while attaching event listeners:",
-          error
-        );
-      }
+    // Define the callback for account changes
+    const handleAccountChange = (...args: unknown[]) => {
+      console.log(
+        "Account changed. Consider prompting the user to refresh the page."
+      );
+      // Any additional logic for handling account changes can go here
+    };
 
+    // Define the callback for network changes
+    const handleNetworkChange = (network: unknown) => {
+      console.log(
+        "Network changed. Consider prompting the user to refresh the page."
+      );
+      // Any additional logic for handling network changes can go here
+    };
+
+    // Register the listeners if the API and its experimental features are available
+    if (api?.experimental?.on && api?.experimental?.off) {
+      api.experimental.on("accountChange", handleAccountChange);
+      api.experimental.on("networkChange", handleNetworkChange);
+
+      // Return a cleanup function to remove the listeners
       return () => {
-        try {
-          api.experimental.off("accountChange", handleAccountChange);
-          api.experimental.off("networkChange", handleNetworkChange);
-        } catch (error) {
-          console.error(
-            "An error occurred while detaching event listeners:",
-            error
-          );
-        }
+        api.experimental.off("accountChange", handleAccountChange);
+        api.experimental.off("networkChange", handleNetworkChange);
       };
     }
-  }, [api, handleAccountChange, handleNetworkChange]);
+  }, [api]);
+
+  // Since the hook now only sets up listeners, there's no need to return anything
 };

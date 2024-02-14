@@ -21,16 +21,6 @@ export interface WalletContextProps {
   setAddr: React.Dispatch<React.SetStateAction<string | undefined>>;
   stakeKey?: string;
   setStakeKey: React.Dispatch<React.SetStateAction<string | undefined>>;
-  ada?: number;
-  setAda: React.Dispatch<React.SetStateAction<number | undefined>>;
-  mane?: number;
-  setMane: React.Dispatch<React.SetStateAction<number | undefined>>;
-  tMane?: number;
-  setTMane: React.Dispatch<React.SetStateAction<number | undefined>>;
-  assetsByPolicyId?: AssetsByPolicy;
-  setAssetsByPolicyId: React.Dispatch<
-    React.SetStateAction<AssetsByPolicy | undefined>
-  >;
   error: AppError | null;
   setError: (error: AppError | null) => void;
 }
@@ -49,3 +39,21 @@ export interface FromUnitResponse {
   label: number | null;
   value: number;
 }
+
+export type Asset = {
+  asset: string | null;
+  policy_id: string;
+  asset_name: string;
+  fingerprint: string;
+  quantity?: string;
+  initial_mint_tx_hash?: string;
+  mint_or_burn_count?: number;
+  onchain_metadata?: {
+    name: string;
+    image: string;
+    [key: string]: string | number;
+  };
+  onchain_metadata_standard?: string;
+  onchain_metadata_extra?: string;
+  metadata?: any;
+};

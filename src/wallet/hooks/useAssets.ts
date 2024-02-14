@@ -1,19 +1,21 @@
+import { useCallback } from "react";
 import { Lucid, UTxO, fromUnit } from "lucid-cardano";
-import { useCallback, useContext } from "react";
-import { WalletContext } from "@/context/UseWalletContext";
 import { AssetsByPolicy } from "@/types/wallet";
 import { PolicyID } from "@/types/policyEnum";
+import React, { useContext, useEffect, useState } from "react";
 
+// Assuming this might now be a regular function or a custom hook that returns data.
 export const useFetchAssets = () => {
-  const { setAda, setMane, setTMane, setAssetsByPolicyId } =
-    useContext(WalletContext);
+  const [policyIsLoading, setPolicyIsLoading] = useState(false);
 
   const fetchAssets = useCallback(
-    async (lucid?: Lucid) => {
+    async (lucid?: Lucid): Promise<AssetsByPolicy | null> => {
       if (!lucid) {
-        console.log("no lucid", lucid);
-        return;
+        console.log("Lucid instance not provided");
+        return null;
       }
+
+      setPolicyIsLoading(true); // Start loading
 
       const interestedPolicyIds = new Set<string>([
         PolicyID.LoveLace,
@@ -33,57 +35,42 @@ export const useFetchAssets = () => {
       ]);
 
       const utxos = await lucid.wallet.getUtxos();
-
       let assetsByPolicy: AssetsByPolicy = {};
 
-      utxos.forEach((u: UTxO) => {
-        Object.entries(u.assets).forEach(([key, value]) => {
-          const assetDetails = fromUnit(key);
-          const policyId = assetDetails.policyId;
-          if (!assetsByPolicy[policyId]) {
-            assetsByPolicy[policyId] = { assets: [], hasAssets: false };
-          }
-          assetsByPolicy[policyId].assets.push({
-            ...assetDetails,
-            value: Number(value),
+      try {
+        utxos.forEach((u: UTxO) => {
+          Object.entries(u.assets).forEach(([key, value]) => {
+            const assetDetails = fromUnit(key);
+            const policyId = assetDetails.policyId;
+            if (!assetsByPolicy[policyId]) {
+              assetsByPolicy[policyId] = { assets: [], hasAssets: false };
+            }
+            assetsByPolicy[policyId].assets.push({
+              ...assetDetails,
+              value: Number(value),
+            });
+            assetsByPolicy[policyId].hasAssets = true;
           });
-          assetsByPolicy[policyId].hasAssets = true;
         });
-      });
 
+        setPolicyIsLoading(false); // End loading
+      } catch (error) {
+        console.error("Failed to fetch assets:", error);
+        setPolicyIsLoading(false); // End loading in case of error
+        return null;
+      }
+
+      // Filter by interested policy IDs
       assetsByPolicy = Object.fromEntries(
         Object.entries(assetsByPolicy).filter(([policyId]) =>
           interestedPolicyIds.has(policyId)
         )
       );
 
-      console.log("assassetsByPolicy", assetsByPolicy);
-
-      const ada =
-        assetsByPolicy[PolicyID.LoveLace]?.assets.reduce(
-          (acc, curr) => acc + curr.value,
-          0
-        ) || 0;
-
-      const mane =
-        assetsByPolicy[PolicyID.Mane]?.assets.reduce(
-          (acc, curr) => acc + curr.value,
-          0
-        ) || 0;
-
-      const tMane =
-        assetsByPolicy[PolicyID.T_Mane]?.assets.reduce(
-          (acc, curr) => acc + curr.value,
-          0
-        ) || 0;
-
-      setAssetsByPolicyId(assetsByPolicy);
-      setAda(ada);
-      setMane(mane);
-      setTMane(tMane);
+      return assetsByPolicy;
     },
-    [setAda, setAssetsByPolicyId, setMane, setTMane]
+    []
   );
 
-  return fetchAssets;
+  return { fetchAssets, policyIsLoading };
 };
