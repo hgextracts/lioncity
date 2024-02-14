@@ -46,7 +46,7 @@ const PolicyCard: React.FC<PolicyCardProps> = ({
           <>
             <h1 className="text-xl font-bold text-center">
               {assets.length > 0
-                ? truncateWalletAddress(assets[0].name || "N/A", 10)
+                ? truncateWalletAddress(assets[0].name || "N/A")
                 : "N/A"}
             </h1>
             <h2>Policy ID: {truncateWalletAddress(policyId)}</h2>
