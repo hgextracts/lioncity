@@ -7,8 +7,6 @@ export default function Mint() {
         videoSrc="degenroll.mp4"
         title="Degens"
         subtitle="Total Supply : 10,000"
-        buttonText="Coming Soon!"
-        buttonUrl="/mint"
       />
       <h1 className="text-6xl font-extrabold">Coming Soon</h1>
     </div>

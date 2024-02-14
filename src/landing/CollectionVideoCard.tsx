@@ -4,8 +4,8 @@ interface CollectionVideoCardProps {
   videoSrc: string;
   title: string;
   subtitle: string;
-  buttonText: string;
-  buttonUrl: string;
+  buttonText?: string;
+  buttonUrl?: string;
 }
 
 const CollectionVideoCard: React.FC<CollectionVideoCardProps> = ({
@@ -31,12 +31,13 @@ const CollectionVideoCard: React.FC<CollectionVideoCardProps> = ({
 
       <div className="flex flex-col items-center gap-2 p-2">
         <h1 className="text-xl font-bold">{title}</h1>
-        <h1 className="">{subtitle}</h1>
-        <div className="button w-fit">
-          <a href={buttonUrl} className="">
+        <h1>{subtitle}</h1>
+        {/* Conditionally render the button only if both buttonText and buttonUrl are provided */}
+        {buttonText && buttonUrl && (
+          <a href={buttonUrl} className="button w-fit">
             {buttonText}
           </a>
-        </div>
+        )}
       </div>
     </div>
   );

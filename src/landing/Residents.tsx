@@ -15,7 +15,7 @@ const Residents = () => {
           alt="newlion"
         />
         <div className="flex flex-col items-center max-w-2xl gap-4">
-          <ul className="text-2xl font-bold bg-shade p-4 rounded-md w-fit">
+          <ul className="text-2xl font-bold bg-radial-secondary-accent p-4 rounded-md w-fit">
             <li>-New Founders</li>
             <li>-New Goals</li>
             <li>-New Direction</li>
@@ -25,7 +25,7 @@ const Residents = () => {
             transformation into Lion City!
           </p>
 
-          <p className="text-xl font-semibold bg-shade rounded-md p-2">
+          <p className="text-xl font-semibold bg-radial-secondary-accent rounded-md p-2">
             Join Our city and take the leap into the CIP-68 Wormhole!
           </p>
         </div>

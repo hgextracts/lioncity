@@ -50,7 +50,7 @@ const team = () => {
         />
       </div>
 
-      <div className="py-6 space-y-4 bg-shade flex flex-col rounded-md p-4 mx-4 items-center">
+      <div className="py-6 space-y-4 bg-radial-shade-background-opposite flex flex-col rounded-md p-4 mx-4 items-center">
         <h1 className="bg-pr py-3 px-4 rounded-md text-2xl">
           Doxxed by{" "}
           <span className="font-bold hover:underline text-accent">

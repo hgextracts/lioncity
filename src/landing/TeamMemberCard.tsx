@@ -21,7 +21,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
   personalWebsiteUrl,
 }) => {
   return (
-    <div className="flex flex-col items-center bg-shade rounded-md p-4">
+    <div className="flex flex-col items-center bg-radial-shade-background rounded-md p-4">
       <h3 className="text-xl font-bold underline tracking-wider mb-2">
         <a href="#">{name}</a>
       </h3>

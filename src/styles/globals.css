@@ -53,12 +53,14 @@ body {
 }
 
 .button {
-  background-color: var(--secondary);
+  background: linear-gradient(to right, var(--secondary), var(--accent));
+
   color: var(--text);
   border: none;
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .menuBackground {

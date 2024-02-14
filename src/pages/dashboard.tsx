@@ -20,6 +20,7 @@ import defaultImage from "../../public/lclogo.png";
 import { fromText } from "lucid-cardano";
 import PolicyCardSkeleton from "@/components/skeletons/PolicyCardSkeleton";
 import UserCardSkeleton from "@/components/skeletons/UserCardSkeleton";
+import Link from "next/link";
 
 const degenHex = fromText("DegensSoon");
 
@@ -156,12 +157,9 @@ const Dashboard: React.FC = () => {
       <LoginModal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
         <div className="flex flex-col gap-6 items-center p-[4rem]">
           <BrowserWallet />
-          <a
-            href="/"
-            className="text-2xl p-4 bg-linear-primary-secondary-l rounded-md"
-          >
+          <Link href="/" className="text-2xl button">
             Return Home
-          </a>
+          </Link>
         </div>
       </LoginModal>
     );
@@ -229,7 +227,7 @@ const Dashboard: React.FC = () => {
           ))}
           {selectedPolicyId && (
             <button
-              className="text-center text-lg py-4 px-2 rounded-md w-[200px] place-self-center bg-linear-primary-secondary"
+              className="button text-2xl"
               onClick={() => fetchNextPage()}
               disabled={isFetchingNextPage}
             >

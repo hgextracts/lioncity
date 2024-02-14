@@ -19,7 +19,7 @@ const StakingPartnerCard: React.FC<StakingPartnerCardProps> = ({
   linkUrl,
 }) => {
   return (
-    <div className="flex flex-col bg-shade p-4 rounded-md">
+    <div className="flex flex-col bg-radial-shade-background p-4 rounded-md">
       <h3 className="text-2xl font-bold tracking-wider mb-2">{title}</h3>
       <Image
         className="mb-2"

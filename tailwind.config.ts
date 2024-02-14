@@ -27,15 +27,26 @@ const config: Config = {
         "linear-primary-secondary-l":
           "linear-gradient(to left, #92b2ec, #0f3f93)",
         "linear-primary-accent": "linear-gradient(#92b2ec, #3a7ef7)",
+        "linear-primary-shade": "linear-gradient(#92b2ec, var(--shade))",
         "linear-secondary-accent": "linear-gradient(#0f3f93, #3a7ef7)",
         "radial-primary-secondary": "radial-gradient(#92b2ec, #0f3f93)",
-        "radial-secondary-primary": "radial-gradient(#0f3f93, #92b2ec)",
+        "radial-shade-background":
+          "radial-gradient(circle at bottom left,var(--shade), var(--background))",
+        "radial-shade-background-opposite":
+          "radial-gradient(circle at top right,var(--shade), var(--background))",
         "radial-primary-accent": "radial-gradient(#92b2ec, #3a7ef7)",
-        "radial-secondary-accent": "radial-gradient(#0f3f93, #3a7ef7)",
+        "radial-secondary-accent":
+          "radial-gradient(circle at top right, #0f3f93, #3a7ef7)",
+        "radial-secondary-accent-opposite":
+          "radial-gradient(circle at bottom left, #0f3f93, #3a7ef7)",
         "radial-secondary-shade":
           "radial-gradient(circle at top left,#0f3f93, var(--shade))",
         "radial-secondary-shade-opposite":
-          "radial-gradient(circle at bottom right,#0f3f93, var(--shade))",
+          "radial-gradient(circle at bottom left,#0f3f93, var(--shade))",
+        "radial-secondary-background":
+          "radial-gradient(circle at top right,#0f3f93, var(--shade))",
+        "radial-background-secondary":
+          "radial-gradient(circle at bottom left,#0f3f93, var(--shade))",
       },
     },
   },

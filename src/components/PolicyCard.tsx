@@ -37,7 +37,7 @@ const PolicyCard: React.FC<PolicyCardProps> = ({
             <h2 className="text-md">Minting Soon</h2>
             <button
               onClick={() => (window.location.href = "/mint")} // Redirects to the minting page
-              className="button bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              className="button"
             >
               Minting Soon
             </button>
