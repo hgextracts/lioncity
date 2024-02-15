@@ -32,7 +32,7 @@ const UserTokens: React.FC<UserTokenProps> = ({
   return (
     <div className="flex flex-col mt-4 gap-4">
       <div className={`flex items-center font-extrabold tracking-wide`}>
-        <span className="text-6xl">
+        <span className="text-4xl md:text-6xl">
           <SiCardano className={spinClass} />
         </span>
         <span className="ml-4 text-xl">
@@ -40,7 +40,9 @@ const UserTokens: React.FC<UserTokenProps> = ({
         </span>
       </div>
       <div className={`flex items-center font-extrabold tracking-wide`}>
-        <Image src={maneImg} alt={"Mane"} width={60} className={spinClass} />
+        <div className="w-[40px] md:w-fit">
+          <Image src={maneImg} alt={"Mane"} width={60} className={spinClass} />
+        </div>
         <span className="ml-4 text-xl">
           {policyIsLoading ? "Loading..." : dustToWhole(mane || 0)}
         </span>

@@ -131,3 +131,13 @@ body {
     clip-path: inset(0 -100px 0 0);
   }
 }
+
+.image-container {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  position: relative; /* Needed for absolute positioning of children */
+  width: 100%; /* Adjust as needed */
+  height: auto; /* Adjust as needed */
+  background: linear-gradient(to right, var(--secondary), var(--accent));
+}

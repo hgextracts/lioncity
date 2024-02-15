@@ -26,9 +26,9 @@ const config: Config = {
           "linear-gradient(to right, #92b2ec, #0f3f93)",
         "linear-primary-secondary-l":
           "linear-gradient(to left, #92b2ec, #0f3f93)",
-        "linear-primary-accent": "linear-gradient(#92b2ec, #3a7ef7)",
+        "linear-secondary-accent":
+          "linear-gradient(to right, var(--secondary), var(--accent))",
         "linear-primary-shade": "linear-gradient(#92b2ec, var(--shade))",
-        "linear-secondary-accent": "linear-gradient(#0f3f93, #3a7ef7)",
         "radial-primary-secondary": "radial-gradient(#92b2ec, #0f3f93)",
         "radial-shade-background":
           "radial-gradient(circle at bottom left,var(--shade), var(--background))",

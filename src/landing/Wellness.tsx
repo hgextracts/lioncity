@@ -23,7 +23,7 @@ const Wellness = () => {
           alt="lclogo"
         />
       </div>
-      <div className="text-lg lg:text-2xl p-2 bg-radial-shade-background rounded-md text-center">
+      <div className="text-lg lg:text-2xl p-2 bg-radial-secondary-shade-opposite rounded-md text-center">
         <h1>Hemp CBD Products coming soon!</h1>
         <h1>Join our discord for a chance to try these products early!</h1>
       </div>

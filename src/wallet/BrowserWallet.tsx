@@ -84,7 +84,7 @@ const BrowserWallet: React.FC<BrowserWalletProps> = ({ textColor }) => {
         <div className="flex justify-center items-center">
           <button
             onClick={() => signIn("discord")}
-            className="flex gap-2 w-full justify-center font-bold bg-linear-primary-secondary p-3 rounded-md"
+            className="flex gap-2 w-full justify-center font-bold bg-radial-secondary-shade-opposite p-3 rounded-md"
           >
             Login with
             <span className="text-2xl">

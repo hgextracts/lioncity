@@ -4,6 +4,8 @@ import { FromUnitResponse } from "@/types/wallet";
 import { truncateWalletAddress } from "@/utils/walletUtils";
 import { PolicyID } from "@/types/policyEnum";
 import defaultImage from "../../public/lclogo.png";
+import { fromHex } from "lucid-cardano";
+import { policyIdToCollectionName } from "@/utils/policyUtils";
 
 interface PolicyCardProps {
   policyData: {
@@ -27,6 +29,8 @@ const PolicyCard: React.FC<PolicyCardProps> = ({
 
   // Check if the current policyId is specifically for "Degens"
   const isDegenPolicy = policyId === PolicyID.Degens;
+
+  const name = policyIdToCollectionName[policyId as PolicyID];
 
   return (
     <div className="col-span-1 h-full bg-radial-secondary-shade-opposite p-4 rounded-md">
@@ -52,11 +56,7 @@ const PolicyCard: React.FC<PolicyCardProps> = ({
           </>
         ) : (
           <>
-            <h1 className="text-xl font-bold text-center">
-              {assets.length > 0
-                ? truncateWalletAddress(assets[0].name || "N/A")
-                : "N/A"}
-            </h1>
+            <h1 className="text-xl font-bold text-center">{name}</h1>
             <h2>Policy ID: {truncateWalletAddress(policyId)}</h2>
             <h2>Holding: {assets.length}</h2>
             <button onClick={onClick} className="button">

@@ -168,9 +168,9 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="flex flex-col my-6 w-full">
-      <div className="flex flex-col mb-6">
+      <div className="flex flex-col mb-4">
         {session && (
-          <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 h-[400px] w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 w-full">
             <div className="md:col-span-2">
               {isLoadingUserData ? (
                 <UserCardSkel />
@@ -215,7 +215,7 @@ const Dashboard: React.FC = () => {
         <>
           {data?.pages.map((page, i) => (
             <div
-              className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 my-2 w-full"
+              className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-4 w-full"
               key={i}
             >
               {page?.map((asset, index) => (
