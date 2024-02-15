@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { WalletContext } from "@/context/UseWalletContext";
-import { policyIdToCollectionName } from "@/utils/policyUtils";
 import { PolicyID } from "@/types/policyEnum";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import AssetCard from "@/components/AssetCard";
@@ -12,15 +11,12 @@ import { AssetsByPolicy } from "@/types/wallet";
 import { getTotalValueByPolicy, getUserStatus } from "@/utils/executiveCheck";
 import PolicyCard from "@/components/PolicyCard";
 import LoginModal from "@/layout/LoginModal";
-import Image from "next/image";
 import { StaticImageData } from "next/image";
 import unluckyImage from "../../public/unluckycrop.png";
 import luckyImage from "../../public/kingcrop.png";
 import degenImage from "../../public/degencrop.png";
-import defaultImage from "../../public/lclogo.png";
 import { fromText } from "lucid-cardano";
 import PolicyCardSkeleton from "@/components/PolicyCardSkeleton";
-import UserCardSkeletons from "@/components/UserCardSkeleton";
 import Link from "next/link";
 import UserCardSkel from "@/components/UserCardSkel";
 

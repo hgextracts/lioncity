@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import maneImg from "../../public/manetoken.png";
-import adaImg from "../../public/Coin-ada-big.svg";
-import adalogo from "../../public/Cardano_logo.svg";
 import { SiCardano } from "react-icons/si";
 
 interface UserTokenProps {
