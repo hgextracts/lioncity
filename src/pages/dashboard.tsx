@@ -13,6 +13,7 @@ import { getTotalValueByPolicy, getUserStatus } from "@/utils/executiveCheck";
 import PolicyCard from "@/components/PolicyCard";
 import LoginModal from "@/layout/LoginModal";
 import Image from "next/image";
+import { StaticImageData } from "next/image";
 import unluckyImage from "../../public/unluckycrop.png";
 import luckyImage from "../../public/kingcrop.png";
 import degenImage from "../../public/degencrop.png";
@@ -21,6 +22,7 @@ import { fromText } from "lucid-cardano";
 import PolicyCardSkeleton from "@/components/PolicyCardSkeleton";
 import UserCardSkeletons from "@/components/UserCardSkeleton";
 import Link from "next/link";
+import UserCardSkel from "@/components/UserCardSkel";
 
 const degenHex = fromText("DegensSoon");
 
@@ -85,7 +87,7 @@ const Dashboard: React.FC = () => {
   const mane = getTotalValueByPolicy(assetsByPolicyId, PolicyID.Mane);
   const tMane = getTotalValueByPolicy(assetsByPolicyId, PolicyID.T_Mane);
 
-  const policyImages = {
+  const policyImages: Partial<Record<PolicyID, StaticImageData>> = {
     [PolicyID.LuckyLions]: luckyImage,
     [PolicyID.FooDogs]: unluckyImage,
     [PolicyID.Degens]: degenImage,
@@ -175,10 +177,10 @@ const Dashboard: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 h-[400px] w-full">
             <div className="md:col-span-2">
               {isLoadingUserData ? (
-                <UserCardSkeletons />
+                <UserCardSkel />
               ) : (
                 <UserCard
-                  image={session.user.image || defaultImage}
+                  image={session.user.image || "defaultImage"}
                   name={session.user.name || "Anonymous"}
                   address={session.user.address}
                   stakeKey={session.user.stakeKey}
@@ -202,7 +204,7 @@ const Dashboard: React.FC = () => {
                     }
                   }
                   policyId={policyId}
-                  image={policyImages[policyId] || defaultImage}
+                  policyImage={policyImages[policyId]}
                   onClick={() => handleAssetSelect(policyId)}
                 />
               )

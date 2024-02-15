@@ -1,8 +1,9 @@
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { FromUnitResponse } from "@/types/wallet";
 import { truncateWalletAddress } from "@/utils/walletUtils";
 import { PolicyID } from "@/types/policyEnum";
+import defaultImage from "../../public/lclogo.png";
 
 interface PolicyCardProps {
   policyData: {
@@ -10,17 +11,19 @@ interface PolicyCardProps {
     hasAssets: boolean;
   };
   policyId: string;
-  image: string;
+  policyImage?: StaticImageData;
   onClick: () => void; // Function to update selected policy
 }
 
 const PolicyCard: React.FC<PolicyCardProps> = ({
   policyData,
   policyId,
-  image,
+  policyImage,
   onClick,
 }) => {
   const { assets, hasAssets } = policyData;
+
+  const imageSrc = policyImage || defaultImage;
 
   // Check if the current policyId is specifically for "Degens"
   const isDegenPolicy = policyId === PolicyID.Degens;
@@ -28,7 +31,12 @@ const PolicyCard: React.FC<PolicyCardProps> = ({
   return (
     <div className="col-span-1 h-full bg-radial-secondary-shade-opposite p-4 rounded-md">
       <div className="flex flex-col items-center justify-around text-center h-full gap-2">
-        <Image src={image} alt={policyId} width={200} className="rounded-md" />
+        <Image
+          src={imageSrc}
+          alt={policyId}
+          width={200}
+          className="rounded-md"
+        />
         {isDegenPolicy ? (
           <>
             <h1 className="text-xl font-bold text-center">

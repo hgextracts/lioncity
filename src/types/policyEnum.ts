@@ -4,7 +4,7 @@ export enum PolicyID {
   LuckyLions = "d1cec82b0608ab5483bd6969cccd0867d60dc9a8bf9700617210b8a5",
   FooDogs = "c41f8b855fe0b9a0d378e5a8d716f9fab287c1fa63e7ccb94ecfce2d",
   Residents = "264d2069a349d90af1dc30cfec55ec4f9351bcc8d5c7d1900cdccbb4",
-  Degens = "DegensComingsSoon ",
+  Degens = "DegensComingsSoon",
   Gangs = "GangsComingSoon",
   Ledger = "LedgerComingsoon",
   Handle = "f0ff48bbb7bbe9d59a40f1ce90e9e9d0ff5002ec48f232b49ca0fb9a",

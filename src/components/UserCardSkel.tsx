@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserCardSkeletons: React.FC = () => {
+const UserCardSkel: React.FC = () => {
   return (
     <div className="flex flex-col bg-radial-secondary-shade rounded-md gap-4 p-4 justify-between h-full animate-pulse">
       <div className="grid grid-cols-2 h-full">
@@ -29,4 +29,4 @@ const UserCardSkeletons: React.FC = () => {
   );
 };
 
-export default UserCardSkeletons;
+export default UserCardSkel;
