@@ -21,6 +21,20 @@ export interface WalletContextProps {
   setAddr: React.Dispatch<React.SetStateAction<string | undefined>>;
   stakeKey?: string;
   setStakeKey: React.Dispatch<React.SetStateAction<string | undefined>>;
+  holderStatus?: string;
+  setHolderStatus: React.Dispatch<React.SetStateAction<string | undefined>>;
+  ada?: number;
+  setAda: React.Dispatch<React.SetStateAction<number | undefined>>;
+  mane?: number;
+  setMane: React.Dispatch<React.SetStateAction<number | undefined>>;
+  tMane?: number;
+  setTMane: React.Dispatch<React.SetStateAction<number | undefined>>;
+  assetsByPolicyId?: AssetsByPolicy;
+  setAssetsByPolicyId: React.Dispatch<
+    React.SetStateAction<AssetsByPolicy | undefined>
+  >;
+  isLoading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   error: AppError | null;
   setError: (error: AppError | null) => void;
 }

@@ -46,28 +46,20 @@ const Dashboard: React.FC = () => {
     PolicyID | undefined
   >(undefined);
 
-  const { lucid, environment } = useContext(WalletContext);
+  const {
+    lucid,
+    environment,
+    holderStatus,
+    ada,
+    mane,
+    tMane,
+    addr,
+    stakeKey,
+    assetsByPolicyId,
+    isLoading,
+  } = useContext(WalletContext);
 
   const [isModalOpen, setModalOpen] = useState(false);
-
-  const [assetsByPolicyId, setAssetsByPolicyId] =
-    useState<AssetsByPolicy>(defaultPolicyObject);
-
-  const { fetchAssets, policyIsLoading } = useFetchAssets();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (lucid) {
-        const fetchedAssets = await fetchAssets(lucid);
-        setAssetsByPolicyId((prevState) => ({
-          ...prevState,
-          ...fetchedAssets,
-        }));
-      }
-    };
-
-    fetchData();
-  }, [lucid, fetchAssets]);
 
   useEffect(() => {
     if (!session || !session.user) {
@@ -76,12 +68,6 @@ const Dashboard: React.FC = () => {
       setModalOpen(false);
     }
   }, [session]);
-
-  const userStatus = getUserStatus(assetsByPolicyId);
-
-  const ada = getTotalValueByPolicy(assetsByPolicyId, PolicyID.LoveLace);
-  const mane = getTotalValueByPolicy(assetsByPolicyId, PolicyID.Mane);
-  const tMane = getTotalValueByPolicy(assetsByPolicyId, PolicyID.T_Mane);
 
   const policyImages: Partial<Record<PolicyID, StaticImageData>> = {
     [PolicyID.LuckyLions]: luckyImage,
@@ -178,17 +164,17 @@ const Dashboard: React.FC = () => {
                 <UserCard
                   image={session.user.image || "defaultImage"}
                   name={session.user.name || "Anonymous"}
-                  address={session.user.address}
-                  stakeKey={session.user.stakeKey}
-                  policyIsLoading={policyIsLoading}
-                  userStatus={userStatus}
+                  address={addr}
+                  stakeKey={stakeKey}
+                  policyIsLoading={isLoading}
+                  userStatus={holderStatus}
                   ada={ada}
                   mane={mane}
                 />
               )}
             </div>
             {nftPolicies.map((policyId) =>
-              policyIsLoading ? (
+              isLoading ? (
                 <PolicyCardSkeleton key={policyId} />
               ) : (
                 <PolicyCard

@@ -35,6 +35,7 @@ body {
     --secondary: #6b9cef;
     --accent: #084dc4;
     --shade: #85b0fa;
+    --active: #13326c;
   }
   .dark {
     --text: #dae3f2;
@@ -43,6 +44,7 @@ body {
     --secondary: #0f3f93;
     --accent: #3a7ef7;
     --shade: #021331;
+    --active: #021331;
   }
 }
 
@@ -140,4 +142,14 @@ body {
   width: 100%; /* Adjust as needed */
   height: auto; /* Adjust as needed */
   background: linear-gradient(to right, var(--secondary), var(--accent));
+}
+
+.link {
+  color: var(--text);
+}
+.activeLink {
+  color: #ffd900;
+  padding: 5px;
+  background-color: var(--active);
+  border-radius: 5px;
 }

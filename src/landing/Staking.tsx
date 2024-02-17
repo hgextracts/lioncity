@@ -53,7 +53,7 @@ const Staking = () => {
           imageUrl="/ccctoken.png"
           altText="$C4"
           title="$C4"
-          descriptions={["Mutants", "Staking Service"]}
+          descriptions={["Cardano Crocs", "Living Lands"]}
           linkText="Earn $C4"
           linkUrl="https://swamplands.cardanocrocsclub.com/"
         />

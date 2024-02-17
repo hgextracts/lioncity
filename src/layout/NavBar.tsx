@@ -4,11 +4,17 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Image from "next/image";
 import lclogo from "../../public/lclogo.png";
 import BrowserWallet from "@/wallet/BrowserWallet";
+import { useRouter } from "next/router";
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);
   const [color, setColor] = useState("transparent");
   const [textColor, setTextColor] = useState("var(--text)");
+  const router = useRouter();
+
+  // Function to determine if the link is active
+  const getLinkClassName = (path: string) =>
+    router.pathname === path ? "activeLink" : "link";
 
   const handleNav = () => {
     setNav(!nav);
@@ -60,45 +66,52 @@ const NavBar = () => {
         >
           <li>
             <Link href="/dashboard">
-              <span>Dashboard</span>
+              <span className={getLinkClassName("/dashboard")}>Dashboard</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/executive">
+              <span className={getLinkClassName("/executive")}>Executive</span>
             </Link>
           </li>
           <li>
             <Link href="/dao">
-              <span>DAO</span>
+              <span className={getLinkClassName("/dao")}>DAO</span>
             </Link>
           </li>
 
           <li>
             <Link href="/gangs">
-              <span>Gangs</span>
+              <span className={getLinkClassName("/gangs")}>Gangs</span>
             </Link>
           </li>
           <li>
             <Link href="/mint">
-              <span>Mint</span>
+              <span className={getLinkClassName("/mint")}>Mint</span>
             </Link>
           </li>
 
           <li>
             <Link href="/wellness">
-              <span>Wellness</span>
+              <span className={getLinkClassName("/wellness")}>Wellness</span>
             </Link>
           </li>
 
           <li>
             <Link href="/staking">
-              <span>$Mane</span>
+              <span className={getLinkClassName("/staking")}>$Mane</span>
             </Link>
           </li>
           <li>
             <Link href="/team">
-              <span>Team</span>
+              <span className={getLinkClassName("/team")}>Team</span>
             </Link>
           </li>
           <li>
             <Link href="/whitepaper">
-              <span>Whitepaper</span>
+              <span className={getLinkClassName("/whitepaper")}>
+                Whitepaper
+              </span>
             </Link>
           </li>
         </ul>
@@ -147,6 +160,13 @@ const NavBar = () => {
               <li>
                 <Link href="/dashboard" onClick={handleNav}>
                   <span>Dashboard</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/executive">
+                  <span className="text-[#ffd900] p-1 bg-[#13326c] rounded-md">
+                    Executive
+                  </span>
                 </Link>
               </li>
               <li>

@@ -20,6 +20,7 @@ const config: Config = {
         secondary: "var(--secondary)",
         accent: "var(--accent)",
         shade: "var(--shade)",
+        active: "var(--active)",
       },
       backgroundImage: {
         "linear-primary-secondary":
@@ -47,6 +48,8 @@ const config: Config = {
           "radial-gradient(circle at top right,#0f3f93, var(--shade))",
         "radial-background-secondary":
           "radial-gradient(circle at bottom left,#0f3f93, var(--shade))",
+        "linear-grey-transparent":
+          "linear-gradient(transparent, var(--primary))",
       },
     },
   },

@@ -3,9 +3,9 @@ import type { Lucid, Network, WalletApi } from "lucid-cardano";
 
 import { AppError } from "@/lib/exceptions";
 import {
+  AssetsByPolicy,
   WalletContextProps,
   WalletDetails,
-  AssetsByPolicy,
 } from "@/types/wallet";
 
 function createNoopSetter<Type>(
@@ -33,6 +33,20 @@ export const defaultContextState: WalletContextProps = {
   setAddr: createNoopSetter<string | undefined>("setAddr"),
   stakeKey: undefined,
   setStakeKey: createNoopSetter<string | undefined>("setStakeKey"),
+  holderStatus: undefined,
+  setHolderStatus: createNoopSetter<string | undefined>("setHolderStatus"),
+  ada: undefined,
+  setAda: createNoopSetter<number | undefined>("setAda"),
+  mane: undefined,
+  setMane: createNoopSetter<number | undefined>("setMane"),
+  tMane: undefined,
+  setTMane: createNoopSetter<number | undefined>("setTMane"),
+  assetsByPolicyId: undefined,
+  setAssetsByPolicyId: createNoopSetter<AssetsByPolicy | undefined>(
+    "setAssetsByPolicyId"
+  ),
+  isLoading: false, // Add this line
+  setLoading: createNoopSetter<boolean>("setLoading"),
   error: null,
   setError: () => {},
 };
@@ -61,6 +75,20 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({
   const [stakeKey, setStakeKey] = useState<string | undefined>(
     defaultContextState.stakeKey
   );
+  const [holderStatus, setHolderStatus] = useState<string | undefined>(
+    defaultContextState.holderStatus
+  );
+  const [ada, setAda] = useState<number | undefined>(defaultContextState.ada);
+  const [mane, setMane] = useState<number | undefined>(
+    defaultContextState.mane
+  );
+  const [tMane, setTMane] = useState<number | undefined>(
+    defaultContextState.tMane
+  );
+  const [assetsByPolicyId, setAssetsByPolicyId] = useState<
+    AssetsByPolicy | undefined
+  >(defaultContextState.assetsByPolicyId);
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<AppError | null>(null);
 
   const contextValue: WalletContextProps = {
@@ -76,6 +104,18 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({
     setWalletDetails,
     stakeKey,
     setStakeKey,
+    holderStatus,
+    ada,
+    setAda,
+    mane,
+    setMane,
+    tMane,
+    setTMane,
+    assetsByPolicyId,
+    setAssetsByPolicyId,
+    setHolderStatus,
+    isLoading,
+    setLoading,
     error,
     setError,
   };
